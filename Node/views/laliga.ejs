@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificació La Lliga</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<body>
+    <header>
+        <h1>Classificació la Lliga 2025/2026</h1>
+        <h2><%- htmlMessage %></h2>
+    </header>
+    <main>
+        <section>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Classificació La Lliga</h2>
+                <a href="/laliga/create" class="action-button add-button" title="Afegir nou equip">
+                    <i class="fas fa-plus"></i> Afegir
+                </a>
+            </div>
+            <ul class="product-list">
+                <li class="product-item list-header">
+                    <strong>EQUIP</strong>
+                    <span>CIUTAT</span>
+                    <span>POSICIÓ</span>
+                </li>
+                
+                <% data.laliga.forEach(equip => { %>
+                    <li class="product-item">
+                        <strong><%= equip.nombre %></strong>
+                        <span><%= equip.ciudad %></span>
+                        <span><%= equip.posicion_actual %></span>
+                        <span><a href="/laliga/<%=equip.id %>"><i class="fas fa-info-circle"></i></a></span>
+                        <span><a href="/laliga/edit_classificacio/<%=equip.id %>"><i class="fas fa-edit"></i></a></span>
+                        <span>
+                            <form action="/laliga/<%= equip.id %>?_method=DELETE" method="POST" style="display:inline;">
+                                <button type="submit"
+                                    class="action-button delete-button" 
+                                    onclick="return confirm('Estàs segur que vols eliminar <%= equip.nombre %>?');">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </span>
+                    </li>
+                <% }) %>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

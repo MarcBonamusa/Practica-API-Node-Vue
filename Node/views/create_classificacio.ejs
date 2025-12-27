@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nou Equip</title>
+    <link rel="stylesheet" href="/nou_css.css">
+</head>
+<body>
+    <header>
+        <h1>Crear Nou Equip</h1>
+        <a href="/laliga">Tornar al llistat</a>
+    </header>
+    
+    <main>
+        <form action="/laliga/createClassificacio" method="POST">
+            
+            <label for="equip">Equip:</label>
+            <input type="text" id="equip" name="equip" required>
+            
+            <label for="ciutat">Ciutat:</label>
+            <input type="text" id="ciutat" name="ciutat" required>
+
+            <label for="posicio">Posició:</label>
+            <input type="number" id="posicio" name="posicio" step="1" required>
+
+            <button type="submit">Afegir Equip</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,142 @@
+{
+  "goleadores": [
+    {
+      "pos": 1,
+      "nombre": "Kylian Mbappé",
+      "equipo": "Real Madrid",
+      "goles": 17
+    },
+    {
+      "pos": 2,
+      "nombre": "Ferran Torres",
+      "equipo": "Barcelona",
+      "goles": 11
+    },
+    {
+      "pos": 3,
+      "nombre": "Vedat Muriqi",
+      "equipo": "Mallorca",
+      "goles": 9
+    },
+    {
+      "pos": 4,
+      "nombre": "Robert Lewandowski",
+      "equipo": "Barcelona",
+      "goles": 8
+    },
+    {
+      "pos": 5,
+      "nombre": "Julián Álvarez",
+      "equipo": "Atlético de Madrid",
+      "goles": 7
+    },
+    {
+      "pos": 6,
+      "nombre": "Karl Etta Eyong",
+      "equipo": "Villarreal / Levante",
+      "goles": 6
+    },
+    {
+      "pos": 7,
+      "nombre": "Cucho Hernández",
+      "equipo": "Real Betis",
+      "goles": 6
+    },
+    {
+      "pos": 8,
+      "nombre": "Rafa Mir",
+      "equipo": "Elche",
+      "goles": 6
+    },
+    {
+      "pos": 9,
+      "nombre": "Alberto Moleiro",
+      "equipo": "Villarreal",
+      "goles": 6
+    },
+    {
+      "pos": 10,
+      "nombre": "Lamine Yamal",
+      "equipo": "Barcelona",
+      "goles": 6
+    },
+    {
+      "pos": 11,
+      "nombre": "Vinícius Júnior",
+      "equipo": "Real Madrid",
+      "goles": 5
+    }
+  ],
+  "laliga": [
+    {
+      "id": 1,
+      "nombre": "FC Barcelona",
+      "ciudad": "Barcelona",
+      "posicion_actual": 1,
+      "puntos": 43
+    },
+    {
+      "id": 2,
+      "nombre": "Real Madrid C.F.",
+      "ciudad": "Madrid",
+      "posicion_actual": 2,
+      "puntos": 39
+    },
+    {
+      "id": 3,
+      "nombre": "Villarreal C.F.",
+      "ciudad": "Villarreal",
+      "posicion_actual": 3,
+      "puntos": 35
+    },
+    {
+      "id": 4,
+      "nombre": "Atlético de Madrid",
+      "ciudad": "Madrid",
+      "posicion_actual": 4,
+      "puntos": 34
+    },
+    {
+      "id": 5,
+      "nombre": "RCD Espanyol",
+      "ciudad": "Barcelona",
+      "posicion_actual": 5,
+      "puntos": 30
+    },
+    {
+      "id": 6,
+      "nombre": "Real Betis Balompié",
+      "ciudad": "Sevilla",
+      "posicion_actual": 6,
+      "puntos": 25
+    },
+    {
+      "id": 7,
+      "nombre": "Athletic Club",
+      "ciudad": "Bilbao",
+      "posicion_actual": 7,
+      "puntos": 23
+    },
+    {
+      "id": 8,
+      "nombre": "Celta Vigo",
+      "ciudad": "Vigo",
+      "posicion_actual": 8,
+      "puntos": 22
+    },
+    {
+      "id": 9,
+      "nombre": "Sevilla F.C.",
+      "ciudad": "Sevilla",
+      "posicion_actual": 9,
+      "puntos": 20
+    },
+    {
+      "id": 10,
+      "nombre": "Getafe C.F.",
+      "ciudad": "Getafe",
+      "posicion_actual": 10,
+      "puntos": 20
+    }
+  ]
+}

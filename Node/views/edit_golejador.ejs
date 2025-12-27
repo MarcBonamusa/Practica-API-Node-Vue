@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edita Golejador</title>
+    <link rel="stylesheet" href="/nou_css.css">
+</head>
+<body>
+    <header>
+        <h1>Editar Golejador: <%= golejador.nombre %></h1>
+    </header>
+    
+    <main>
+        <form action="/golejadors/<%= golejador.pos %>?_method=PUT" method="POST">
+            <label for="nombre">Nom:</label>
+            <input type="text" id="nombre" name="nombre" value="<%= golejador.nombre %>" required>
+            
+            <label for="equipo">Equip:</label>
+            <input type="text" id="equipo" name="equipo" value="<%= golejador.equipo %>" required>
+
+            <label for="goles">Gols:</label>
+            <input type="number" id="goles" name="goles" value="<%= golejador.goles %>" step="0.01" required>
+
+            <button type="submit">Desar Canvis</button>
+        </form>
+        <a href="/golejadors">Tornar al llistat</a>
+    </main>
+</body>
+</html>

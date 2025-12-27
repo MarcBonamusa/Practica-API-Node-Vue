@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edita Classificació</title>
+    <link rel="stylesheet" href="/nou_css.css">
+</head>
+<body>
+    <header>
+        <h1>Editar Equip: <%= equip.nombre %></h1>
+    </header>
+    
+    <main>
+        <form action="/laliga/<%= equip.id %>?_method=PUT" method="POST">
+            <label for="nombre">Nom:</label>
+            <input type="text" id="nombre" name="nombre" value="<%= equip.nombre %>" required>
+            
+            <label for="ciudad">Ciutat:</label>
+            <input type="text" id="ciudad" name="ciudad" value="<%= equip.ciudad %>" required>
+
+            <label for="posicion_actual">Posició:</label>
+            <input type="number" id="posicion_actual" name="posicion_actual" value="<%= equip.posicion_actual %>" required>
+
+            <button type="submit">Desar Canvis</button>
+        </form>
+        <a href="/laliga">Tornar al llistat</a>
+    </main>
+</body>
+</html>

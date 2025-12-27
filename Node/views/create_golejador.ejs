@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nou Golejador</title>
+    <link rel="stylesheet" href="/nou_css.css">
+</head>
+<body>
+    <header>
+        <h1>Crear Nou Golejador</h1>
+        <a href="/golejadors">Tornar al llistat</a>
+    </header>
+    
+    <main>
+        <form action="/golejadors/createGolejador" method="POST">
+            
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom" required>
+            
+            <label for="equip">Equip:</label>
+            <input type="text" id="equip" name="equip" required>
+
+            <label for="gols">Gols:</label>
+            <input type="number" id="gols" name="gols" step="1" required>
+
+            <button type="submit">Afegir Golejador</button>
+        </form>
+    </main>
+</body>
+</html>
