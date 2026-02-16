@@ -1,99 +1,94 @@
 import express from 'express';
 import golejadorRoutes from './routes/golejadors.js';
-import laligaRouter from './routes/laliga.js';
-import methodOverride from 'method-override';
-import {PORT, SECRET_JWT_KEY} from './config.js'
+import { PORT, SECRET_JWT_KEY } from './config.js';
 import { UserRepository } from './user-repository.js';
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
 const app = express();
+
 app.use(express.json());
-app.use(cookieParser())
-app.use(express.static("public")); // Càrrega CSS i altres fitxers públics
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride('_method'));
 
 app.use(cors({
     origin: 'http://localhost:5173',
     credentials: true
-}))
+}));
 
-app.set('view engine', 'ejs'); // Motor de plantilles
-app.set('views', './views'); // Ubicació de les plantilles
+app.use((req, res, next) => {
+    const token = req.cookies.access_token;
+    req.session = { user: null };
 
-//inicio middleware. Es el interceptor de todos los endpoints
-/*
-app.use((req,res,next)=>{
-    const token =req.cookies.access_token
-    req.session={user: null}
-    try{
-        const data=jwt.verify(token,SECRET_JWT_KEY)
-        req.session.user=data
-    }catch(error){
-        req.session.user=null
+    if (token) {
+        try {
+            const data = jwt.verify(token, SECRET_JWT_KEY);
+            req.session.user = data;
+        } catch (error) {
+            req.session.user = null;
+        }
     }
-    next() 
-})*/
+    next();
+});
 
-app.use('/golejadors', golejadorRoutes);
-app.use('/laliga', laligaRouter); 
+app.post('/login', async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const user = await UserRepository.login({ username, password });
 
-app.get('/',(req,res)=>{
-    const {user}=req.session
-    res.render('login',user)
-});   
-app.post('/login', async (req,res)=>{
-    try{
-        const {username,password}=req.body // coge los datos del formulario (body)
-        const user = await UserRepository.login({username,password})
         const token = jwt.sign(
-            {id: user._id, username: user.username},
-            SECRET_JWT_KEY, 
-            {
-            expiresIn:'1h'
-            })
-        res
-        .cookie('access_token',token,{
-            httpOnly:true, 
-            
-            secure: process.env.NODE_ENV==='production',
-            sameSite:'strict', 
-            maxAge:1000*60*60 
+            { id: user._id, username: user.username },
+            SECRET_JWT_KEY,
+            { expiresIn: '1h' }
+        );
+
+        res.cookie('access_token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            maxAge: 1000 * 60 * 60
         })
-        .send({ user,token })
-    }catch (error){
-        res.status(401).send(error.message)
+        .json({ status: 'ok', user, message: 'Login correcte' });
+
+    } catch (error) {
+        res.status(401).json({ message: error.message });
     }
 });
-app.post('/register', async (req,res)=>{
-    
-    const {username,password}=req.body
-    console.log(req.body)
-    try{
-        const id= await UserRepository.create({username,password});
-        res.send({id})
-    }catch(error){
-        res.status(400).send(error.message)
+
+app.post('/register', async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        const id = await UserRepository.create({ username, password });
+        res.status(201).json({ id, message: 'Usuari creat' });
+    } catch (error) {
+        res.status(400).json({ message: error.message });
     }
 });
-app.post('/logout',(req,res)=>{
+
+app.post('/logout', (req, res) => {
     res
-    .clearCookie('access_token')
-    .json({message:'logout successfull'})
-    .send('logout');
+        .clearCookie('access_token')
+        .json({ message: 'Logout exitós' });
 });
-app.get('/protected2',(req,res)=>{
-    const {user}=req.session
-    if (!user) return res.status(403).send('acceso no autorizado')
-    res.render('protected2',user)
+
+app.get('/protected', (req, res) => {
+    if (req.session.user) {
+        res.json({ authenticated: true, user: req.session.user });
+    } else {
+        res.status(401).json({ authenticated: false });
+    }
 });
-app.get('/protected',(req,res)=>{
-    const {user}=req.session
-    if (!user) return res.status(403).send('acceso no autorizado')
-    res.render('home',user)
-});
-app.listen(PORT,()=>{
-    console.log(`Server running on port${PORT}`);
+
+const requireAuth = (req, res, next) => {
+    if (!req.session.user) {
+        return res.status(403).json({ message: 'Accés denegat' });
+    }
+    next();
+};
+
+app.use('/golejadors', requireAuth, golejadorRoutes);
+
+app.listen(PORT, () => {
+    console.log(`Servidor API REST corrent en port ${PORT}`);
 });

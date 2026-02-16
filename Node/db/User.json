@@ -1,12 +1,1 @@
-[
-  {
-    "_id": "10ceda8b-fd1b-4df9-a88f-78ff9aa400d3",
-    "username": "Daniel Alcorcon",
-    "password": "$2b$10$ubmPuPuVg4tM7qW9yWwb3Okfbd/v5Hlul4nNAcj27xnK6/JUw/Z7a"
-  },
-  {
-    "_id": "5b0eb53c-ea39-479b-984b-3d737e5c1b16",
-    "username": "francesc",
-    "password": "$2b$10$MOFzv44uXwTUPAjocwnv9edeGVU3qiJ6Hc0UJjEO/nQF34h2/onui"
-  }
-]
+[{"_id":"eeb4da0b-bc4e-470f-8642-6d8c3f7c821e","username":"Paco","password":"$2b$10$8zwaKbE4mjIq0Nm3r79v/.dVc/gCWYWDucThqqXFQBdjb39u55QKO"},{"_id":"0626a0ce-22f9-4f5a-bd66-77ed3b797509","username":"Manolo","password":"$2b$10$FyayNRZWnBbOQYh04SkPHeHCULxj3F07B58N8fi9h3kCeYNRoHEt2"},{"_id":"7261fa23-3fa6-4ddf-9225-1ff6516f8f35","username":"Pepe","password":"$2b$10$b6DrW9AojKZT6PwZ7Z94me49tSo.FH7WMJMehxuRD9/JtBfqAGLeO"},{"_id":"3eebd663-ae76-44c8-9e07-6fabde6afdbd","username":"Marc","password":"$2b$10$OEuFruEtB/1JLntryGY.x.SgiowyGy..A3tzD1EMC8OlBLGoY2Hoy"},{"_id":"10ceda8b-fd1b-4df9-a88f-78ff9aa400d3","username":"Daniel Alcorcon","password":"$2b$10$ubmPuPuVg4tM7qW9yWwb3Okfbd/v5Hlul4nNAcj27xnK6/JUw/Z7a"},{"_id":"5b0eb53c-ea39-479b-984b-3d737e5c1b16","username":"francesc","password":"$2b$10$MOFzv44uXwTUPAjocwnv9edeGVU3qiJ6Hc0UJjEO/nQF34h2/onui"}]
