@@ -37,10 +37,10 @@ function createGolejador() {
     <main>
       <form @submit.prevent="createGolejador">
         <label for="nombre">Nom:</label>
-        <input type="text" id="nombre" v-model="nuevoGolejador.nom" placeholder="Ex: Leo Messi" required /><br>
+        <input type="text" id="nombre" v-model="nuevoGolejador.nom" placeholder="Ex: Lamine Yamal" required /><br>
 
         <label for="equipo">Equip:</label>
-        <input type="text" id="equipo" v-model="nuevoGolejador.equip" placeholder="Ex: Inter Miami" required /><br>
+        <input type="text" id="equipo" v-model="nuevoGolejador.equip" placeholder="Ex: FC Barcelona" required /><br>
 
         <label for="goles">Gols:</label>
         <input type="number" id="goles" v-model.number="nuevoGolejador.gols" required /><br>
